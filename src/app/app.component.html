@@ -1,0 +1,19 @@
+<div *ngIf="diffReport">
+  <h3>
+    Difference Report :-
+  </h3>
+  <ul>
+    <li>Total Diff Count : {{diffReport.totalDiffCount}}</li>
+    <li>Missing Properties : {{diffReport.missingProperties}}</li>
+    <li>Unequal Values : {{diffReport.unequalValues}}</li>
+    <li>Incorrect Types : {{diffReport.incorrectTypes}}</li>
+  </ul>
+</div>
+<app-json-comparison
+  [leftTree]="sampleArray2[0]"
+  [rightTree]="sampleArray2[1]"
+  [hideInitialStep]="true"
+  [hideReport]="true"
+  (differenceReport)="differenceReport($event)"
+></app-json-comparison>
+<button *ngIf="!diffReport" (click)="compare()">Click to Diff check</button>
